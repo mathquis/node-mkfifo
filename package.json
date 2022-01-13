@@ -1,14 +1,14 @@
 {
   "name": "@mathquis/mkfifo",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "mkfifo(3) for NodeJS",
   "keywords": [
     "mkfifo"
   ],
-  "homepage": "https://github.com/@mathquis/node-mkfifo",
+  "homepage": "https://github.com/mathquis/node-mkfifo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/@mathquis/node-mkfifo.git"
+    "url": "https://github.com/mathquis/node-mkfifo.git"
   },
   "license": "MIT",
   "author": "Artem Zaytsev <arepo@nologin.ru>",
@@ -44,6 +44,7 @@
     "node-addon-api": "^4.2.0"
   },
   "devDependencies": {
-    "nodeunit": "^0.11.3"
+    "nodeunit": "^0.11.3",
+    "@mathquis/node-pre-gyp-github": "^1.0.0"
   }
 }
