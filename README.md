@@ -3,7 +3,7 @@
 
 ## Installation
 ```
-npm install mkfifo
+npm install @mathquis/mkfifo
 ```
 
 ## Example
