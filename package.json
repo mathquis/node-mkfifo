@@ -1,24 +1,38 @@
 {
-  "name": "mkfifo",
+  "name": "@mathquis/mkfifo",
   "version": "2.1.0",
   "description": "mkfifo(3) for NodeJS",
   "keywords": [
     "mkfifo"
   ],
-  "homepage": "https://github.com/avz/node-mkfifo",
+  "homepage": "https://github.com/@mathquis/node-mkfifo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/avz/node-mkfifo.git"
+    "url": "https://github.com/@mathquis/node-mkfifo.git"
   },
   "license": "MIT",
   "author": "Artem Zaytsev <arepo@nologin.ru>",
   "main": "./main.js",
+  "gypfile": true,
+  "binary": {
+    "module_name": "mkfifo",
+    "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
+    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
+    "host": "https://github.com/mathquis/node-mkfifo/releases/download/",
+    "remote_path": "{version}"
+  },
   "types": "./types/main.d.ts",
   "engines": {
     "node": ">=8.12"
   },
   "scripts": {
-    "test": "nodeunit test"
+    "test": "nodeunit test",
+    "preinstall": "npm install @mapbox/node-pre-gyp",
+    "install": "node-pre-gyp install --fallback-to-build",
+    "configure": "node-pre-gyp configure",
+    "build": "npm run configure && node-pre-gyp build && npm test",
+    "rebuild": "npm run configure && node-pre-gyp rebuild && npm test",
+    "release": "node-pre-gyp configure && node-pre-gyp build && node-pre-gyp package && node-pre-gyp-github publish --release"
   },
   "os": [
     "linux",
@@ -26,7 +40,8 @@
     "darwin"
   ],
   "dependencies": {
-    "node-addon-api": "^1.6.3"
+    "@mapbox/node-pre-gyp": "^1.0.8",
+    "node-addon-api": "^4.2.0"
   },
   "devDependencies": {
     "nodeunit": "^0.11.3"

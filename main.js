@@ -1,4 +1,6 @@
-var binding = require(__dirname + '/build/Release/mkfifo');
+const Path			= require('path')
+const Binary		= require('@mapbox/node-pre-gyp')
+console.log(Path.resolve(Path.join(__dirname,'./package.json')))
+const binding_path	= Binary.find(Path.resolve(Path.join(__dirname,'./package.json')))
 
-exports.mkfifoSync = binding.mkfifoSync;
-exports.mkfifo = binding.mkfifo;
+module.exports = require(binding_path)
